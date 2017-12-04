@@ -14,6 +14,7 @@
  <table class="table">
       <tr>
         <th>ID</th>
+        <th>Status</th>
         <th>Name</th>
         <th>Payment Method</th>
         <th>Payment Amount</th>
@@ -22,12 +23,34 @@
       </tr>
       {% for doc in docs %}
         <tr>
-        <td><a href="competitor/{{doc.id}}"> {{ doc.id }}</a> </td>
-        <td> {{ doc.doc.name }} </td>
-        <td> {{ doc.doc.payment_method }} </td>
-        <td> {{ doc.doc.payment_amount }} </td>
-        <td> {{ doc.doc.payment_memo }} </td>
-        <td>  <span class="badge">{{ doc.doc.events|length }}</span></td>
+        <td><a href="/competitor/{{doc['_id']}}">{{ doc['_id'] }}</a> </td>
+        <td>
+          {% set state = "success" %}
+          {% set status = "registered" %}
+          {% if doc['payment_type'] == 'unpaid' %}
+          {% set state = "danger" %}
+          {% set status = "unpaid" %}
+          {% elif doc['payment_amount'] == '': %}
+          {% set  state = "danger"  %}
+          {% set status = "unpaid" %}
+          {% elif doc['events']|length== 1 and doc['payment_amount'] != '40': %}
+          {%  set state = "warning" %}
+          {% set status = "mismatch" %}
+          {% elif doc['events']|length == 2 and doc['payment_amount'] !='50': %}
+          {%  set state = "warning" %}
+          {% set status = "mismatch" %}
+          {% elif doc['events']|length >=3 and doc['payment_amount'] !='60': %}
+          {%  set state = "warning" %}
+          {% set status = "mismatch" %}
+          {% endif %}
+          <span class="label label-{{ state }}">{{status}}</span>
+
+        </td>
+        <td> {{ doc['name'] }} </td>
+        <td> {{ doc['payment_type'] }} </td>
+        <td> {{ doc['payment_amount'] }} </td>
+        <td> {{ doc['payment_memo'] }} </td>
+        <td>  <span class="badge  badge-light">{{ doc['events']|length }}</span></td>
         </tr>
       {% endfor %}
     </table>

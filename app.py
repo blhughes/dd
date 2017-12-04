@@ -145,3 +145,23 @@ def ringsheet(eid):
   key = ((eid,EVENTS[eid]),AGE_DIVISIONS[int(age)],exp)
   competitors = event_data[key]
   return render_template('ringsheet.html', competitors=competitors,event_key=key,EXP_DIVISIONS=EXP_DIVISIONS)
+
+@app.route('/stats')
+def stats():
+  competitors = [x for x in mongo.db.competitors.find()]
+  entries = len(competitors)
+  event_data = process_event_data(competitors)
+  recorded_payments = sum( [float(doc['payment_amount']) for doc in competitors if doc.has_key('payment_amount') and doc['payment_amount']!=""]  )
+  events=[doc['events'] for doc in competitors if doc.has_key('events')]
+  esum=0
+  for event in events:
+    if(len(event) ==1):
+      esum = esum+40
+    elif(len(event) ==2):
+      esum = esum+50
+    elif(len(event) >=3):
+      esum = esum+60
+  payment=esum
+ 
+  return render_template('stats.html', docs = competitors, entries=entries, recorded_payments=recorded_payments, payment=payment, events=len(event_data))
+
