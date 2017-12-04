@@ -1,0 +1,366 @@
+{% extends "index.html" %}
+{% block content %}
+<form class="form" method="POST" action="/register">
+  <input id="uid" name="uid" type="hidden" value="{{doc['uid']}}">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-3">
+      <div class="card card-signup">
+        <div class="header header-primary text-center">
+          <h4>Competitor Registration</h4>
+        </div>
+        <div class="content">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">face</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="name" placeholder="Name" value="{{doc['name']}}" required>
+              <span class="material-input"></span>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">home</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="address" placeholder="Address" value="{{doc['address']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">phone</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="phone" placeholder="Phone #" value="{{doc['phone']}}" />
+              <span class="material-input"></span>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">email</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="email" placeholder="Email" value="{{doc['email']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">date_range</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="number" min=1 class="form-control" name="age" placeholder="Age" value="{{doc['age']}}" required>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">supervisor_account</i>
+            </span>
+            <div class="form-group is-empty">
+              <label>Gender</label>
+              <div class="radio">
+                <label>Male <input type="radio" name="gender" value="M" {% if doc['gender']=='M' %} checked{% endif %} required></label>
+              </div>
+              <div class="radio">
+                <label>Female <input type="radio" name="gender" value="F" {% if doc['gender']=='F' %} checked{% endif %} required></label>
+              </div>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">assignment</i>
+            </span>
+            <div class="form-group is-empty">
+              <label>Experience Group</label>
+              <div class="radio">
+                <label>Novice (<1 Year)<input type="radio" name="experience" value="novice" {% if doc['experience']=='novice' %} checked {%endif%} required></label>
+              </div>
+              <div class="radio">
+                <label>Beginner (1-2 Years)<input type="radio" name="experience" value="beginner" {% if doc['experience']=='beginner' %} checked {%endif%}required></label>
+              </div>
+              <div class="radio">
+                <label>Intermediate (2-4 Years)<input type="radio" name="experience" value="intermediate" {% if doc['experience']=='intermediate' %} checked {%endif%}required></label>
+              </div>
+              <div class="radio">
+                <label>Advanced (4 - 10 Years)<input type="radio" name="experience" value="advanced" {% if doc['experience']=='advanced' %} checked {%endif%}required></label>
+              </div>
+              <div class="radio">
+                <label>Adavnced Plus (10+ Years)<input type="radio" name="experience" value="advanced_plus" {% if doc['experience']=='advanced_plus' %} checked {%endif%}required></label>
+              </div>
+              <span class="material-input"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 50px;">
+      </div>
+    </div>
+    <div class="col-md-4  col-sm-6 ">
+      <div class="card card-signup">
+        <div class="header header-primary text-center">
+          <h4>School Information</h4>
+        </div>
+        <div class="content">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">business</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="school_name" placeholder="School Name" value="{{doc['school_name']}}" />
+              <span class="material-input"></span>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">person</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="school_master" placeholder="Sifu / Master" value="{{doc['school_master']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">home</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="school_address" placeholder="Address" value="{{doc['school_address']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">phone</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="school_phone" placeholder="Phone #" value="{{doc['school_phone']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">email</i>
+            </span>
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" name="school_email" placeholder="Email" value="{{doc['school_email']}}"/>
+              <span class="material-input"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+  <div class="col-md-4">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="material-icons">payment</i>
+            </span>
+            <div class="form-group is-empty">
+    <div class="radio">
+      <label><input type="radio" value="cash" name="payment_type" {% if doc['payment_type']=='cash' %} checked {%endif%}required>Cash</input></label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" value="check" name="payment_type" {% if doc['payment_type']=='check' %} checked {%endif%}required>Check</input></label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" value="card" name="payment_type" {% if doc['payment_type']=='card' %} checked {%endif%}required>Card</input></label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" value="unpaid" name="payment_type" {% if doc['payment_type']=='unpaid' %} checked {%endif%}required>Unpaid</input></label>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="col-md-4">
+    <input type="number" min="0" step="0.01" class="form-control" name="payment_amount" placeholder="Payment Amount" value="{{doc['payment_amount']}}"/>
+    <input type="text" class="form-control" name="payment_memo" placeholder="Payment Memo" value="{{doc['payment_memo']}}"/>
+  </div>
+  </div>
+  <div class="row">
+    <div class="header header-primary text-center">
+      <h3>Events</h3>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+        <h4>External Forms</h4>
+
+        <h5><u>Empty Hand</u></h5>
+          <div class="checkbox">
+            <label><input type="checkbox" value="104" name="events" {% if '104' in doc['events'] %} checked{% endif %}>Trad. Northern</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="105" name="events" {% if '105' in doc['events'] %} checked{% endif %}>Trad. Southern Longfist</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="106" name="events" {% if '106' in doc['events'] %} checked{% endif %}>Trad. Southern Shorthand</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="103" name="events" {% if '103' in doc['events'] %} checked{% endif %}>Trad. Open</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="101" name="events" {% if '101' in doc['events'] %} checked{% endif %}>Cont. Chang Chuan</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="102" name="events" {% if '102' in doc['events'] %} checked{% endif %}>Cont. Nan Chuan</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="103" name="events" {% if '103' in doc['events'] %} checked{% endif %}>Cont. Open</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="100" name="events" {% if '100' in doc['events'] %} checked{% endif %}>Chuan Fa/Kempo</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="107" name="events" {% if '107' in doc['events'] %} checked{% endif %}>Two Person External</label>
+          </div>
+        <h5><u>Weapons</u></h5>
+          <div class="checkbox">
+            <label><input type="checkbox" value="113" name="events" {% if '113' in doc['events'] %} checked{% endif %}>Trad. Long</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="115" name="events" {% if '115' in doc['events'] %} checked{% endif %}>Trad. Short</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="112" name="events" {% if '112' in doc['events'] %} checked{% endif %}>Trad. Flexible/Double</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="114" name="events" {% if '114' in doc['events'] %} checked{% endif %}>Trad. Open</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="109" name="events" {% if '109' in doc['events'] %} checked{% endif %}>Cont. Long</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="111" name="events" {% if '111' in doc['events'] %} checked{% endif %}>Cont. Short</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="108" name="events" {% if '108' in doc['events'] %} checked{% endif %}>Cont. Flexible/Double</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="110" name="events" {% if '110' in doc['events'] %} checked{% endif %}>Cont. Open</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="132" name="events" {% if '132' in doc['events'] %} checked{% endif %}>Two Person Ext. Weapon</label>
+          </div>
+         
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+        <h4>Internal Forms</h4>
+        <h5><u>Empty Hand</u></h5>
+          <div class="checkbox">
+            <label><input type="checkbox" value="116" name="events" {% if '116' in doc['events'] %} checked{% endif %}>Chen Tai Chi</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="122" name="events" {% if '122' in doc['events'] %} checked{% endif %}>Yang Tai Chi</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="117" name="events" {% if '117' in doc['events'] %} checked{% endif %}>Guang Ping Tai Chi</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="120" name="events" {% if '120' in doc['events'] %} checked{% endif %}>Open Tai Chi</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="118" name="events" {% if '118' in doc['events'] %} checked{% endif %}>Hsing I/Bagua</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="119" name="events" {% if '119' in doc['events'] %} checked{% endif %}>Open Internal (Not Tai Chi)</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="121" name="events" {% if '121' in doc['events'] %} checked{% endif %}>Two Person Internal</label>
+          </div>
+
+        <h5><u>Weapons</u></h5>
+          <div class="checkbox">
+            <label><input type="checkbox" value="123" name="events" {% if '123' in doc['events'] %} checked{% endif %}>Internal Long</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="125" name="events" {% if '125' in doc['events'] %} checked{% endif %}>Internal Short</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="126" name="events" {% if '126' in doc['events'] %} checked{% endif %}>Internal Sword</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="124" name="events" {% if '124' in doc['events'] %} checked{% endif %}>Internal Open</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="133" name="events" {% if '133' in doc['events'] %} checked{% endif %}>Two Person Internal Weapon</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+        <h4>Reaction Skills</h4>
+          <div class="checkbox">
+            <label><input type="checkbox" value="128" name="events" {% if '128' in doc['events'] and doc['gender'] == 'M'%} checked{% endif %}>Men's Continuous Sparring</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="128" name="events" {% if '128' in doc['events']and doc['gender'] == 'F' %} checked{% endif %}>Women's Continous Sparring</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="129" name="events" {% if '129' in doc['events'] and doc['gender'] == 'M'%} checked{% endif %}>Men's Fixed Step Push Hands</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="129" name="events" {% if '129' in doc['events'] and doc['gender'] == 'F'%} checked{% endif %}>Women's Fixed Step Push Hands</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="130" name="events" {% if '130' in doc['events'] and doc['gender'] == 'M'%} checked{% endif %}>Men's Moving Step Push Hands</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="130" name="events" {% if '130' in doc['events'] and doc['gender'] == 'F'%} checked{% endif %}>Women's Moving Step Push Hands</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="127" name="events" {% if '127' in doc['events'] and doc['gender'] == 'M'%} checked{% endif %}>Men's Chi Sau</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="127" name="events" {% if '127' in doc['events'] and doc['gender'] == 'F'%} checked{% endif %}>Women's Chi Sau</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="131" name="events" {% if '131' in doc['events'] and doc['gender'] == 'M'%} checked{% endif %}>Men's Shuai Jiao</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="131" name="events" {% if '131' in doc['events'] and doc['gender'] == 'F'%} checked{% endif %}>Women's Shuai Jiao</label>
+          </div>
+        <div>
+          <h5><u>Push Hands Weight Divisions</u></h5>
+          <p><b>Men:</b>(<=155),(156-190),(191-230),(231+)</p>
+          <p><b>Women:</b>(<=130),(131-160),(161+)</p>
+        </div>  
+        <div>
+          <h5><u>Shuai Jiao Weight Divisions</u></h5>
+          <p><b>Men:</b>(<=140),(141-155),(156-170),(171-185),(186-200),(201-220),(221+)</p>
+          <p><b>Women:</b>(<=130),(131-160),(161+)</p>
+        </div>  
+        </div>
+      </div>
+  </div>
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <div class="footer text-center">
+      <input type="submit" class="btn btn-primary" value="Submit Registration" />
+    </div> 
+    </div>
+  </div>  
+  
+
+</form>
+{% endblock %}

@@ -1,0 +1,83 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ringsheet </title>
+  <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+  <div class="row">
+  <div class="col-xs-6">
+    <h3><b>Division</b>{{event_key[0][0]}} - {{event_key[0][1]}}</h3>
+  </div>
+  <div class="col-xs-6">
+    <h3><b>Level:</b> {{EXP_DIVISIONS[event_key[2]]}}</h3>
+    <h3><b>Age:</b> {{event_key[1][0]}}</h3>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <p><b>Head Judge:</b>_________________________________</p>
+    </div>
+    <div class="col-xs-4">
+      <p><b>Judge 1:</b>_________________________________</p>
+    </div>
+    <div class="col-xs-4">
+      <p><b>Judge 2:</b>_________________________________</p>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-4"></div>
+    <div class="col-xs-4 ">
+      <p><b>Judge 3:</b>_________________________________</p>
+    </div>
+    <div class="col-xs-4">
+      <p><b>Judge 4:</b>_________________________________</p>
+    </div>
+  </div>
+  <div class="row">
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+    <th><h4>Name</h4></th>
+    <th><h4>Judge 1</h4></th>
+    <th><h4>Judge 2</h4></th>
+    <th><h4>Judge 3</h4></th>
+    <th><h4>Judge 4</h4></th>
+    <th><h4>&nbsp;&nbsp;&nbsp;</h4></th>
+    <th><h4>Average</h4></th>
+    <th><h4>Deductions</h4></th>
+    <th><h4>Final Score</h4></th>
+  </tr>
+  </thead>
+  {% for competitor in competitors %}
+  <tr>
+    <td>{{competitor.name}}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  {% endfor %}
+  {% for x in range(0,30 - competitors|length) %}
+  <tr>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  {% endfor %}
+  </table>
+  </div>
+  </div>
+</body>
+</html>

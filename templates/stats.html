@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+ <h4>Competitors: {{entries}}</h4>
+ <h4>Events: {{events}}</h4>
+ <h4>Payment estimate via registered events: ${{payment}}</h4>
+ <h4>Payment Records: ${{recorded_payments}}</h4>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+ <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Payment Method</th>
+        <th>Payment Amount</th>
+        <th>Memo</th>
+        <th>Events</th>
+      </tr>
+      {% for doc in docs %}
+        <tr>
+        <td><a href="competitor/{{doc.id}}"> {{ doc.id }}</a> </td>
+        <td> {{ doc.doc.name }} </td>
+        <td> {{ doc.doc.payment_method }} </td>
+        <td> {{ doc.doc.payment_amount }} </td>
+        <td> {{ doc.doc.payment_memo }} </td>
+        <td>  <span class="badge">{{ doc.doc.events|length }}</span></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

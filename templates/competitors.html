@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+ <h4>Competitors: {{entries}}</h4>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Experience</th>
+        <th>Events</th>
+      </tr>
+      {% for doc in docs %}
+        <tr>
+        <td><a href="competitor/{{doc['_id']}}"> {{ doc['_id'] }}</a> </td>
+        <td> {{ doc['name'] }} </td>
+        <td> {{ doc['gender'] }} </td>
+        <td> {{ doc['age'] }} </td>
+        <td> {{ doc['experience'] }} </td>
+        <td>  <span class="badge">{{ doc['events']|length }}</span></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

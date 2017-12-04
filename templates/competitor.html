@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-2">
+    <a href="/edit/{{doc['_id']}}" class="btn btn-primary" />Edit Registration </a>
+  </div>
+  <div class="col-md-3">
+    <form class="form" method="POST" action="/unregister">
+      <input type="hidden" name="uid" value="{{doc['_id']}}"/>
+      <input type="submit" class="btn btn-primary" value="Delete Registration" data-toggle="confirmation"/>
+    </form>
+  </div>
+ </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h4>Competitor</h4>
+    <dl class="row">
+      <dt class="col-sm-3">Name:</dt>
+      <dd class="col-sm-9">{{doc['name']}}</dd>
+      
+      <dt class="col-sm-3">Gender:</dt>
+      <dd class="col-sm-9">{{doc['gender']}}</dd>
+      
+      <dt class="col-sm-3">Age:</dt>
+      <dd class="col-sm-9">{{doc['age']}}</dd>
+      
+      <dt class="col-sm-3">Experience:</dt>
+      <dd class="col-sm-9">{{doc['experience']}}</dd>
+
+      
+      <dt class="col-sm-3">Address:</dt>
+      <dd class="col-sm-9">{{doc['address']}}</dd>
+
+
+      <dt class="col-sm-3">Phone:</dt>
+      <dd class="col-sm-9">{{doc['phone']}}</dd>
+      
+      <dt class="col-sm-3">Email:</dt>
+      <dd class="col-sm-9">{{doc['email']}}</dd>
+      
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <h4>School Info</h4>
+    <dl class="row">
+      <dt class="col-sm-3">Name:</dt>
+      <dd class="col-sm-9">{{doc['school_name']}}</dd>
+      
+      <dt class="col-sm-3">Master:</dt>
+      <dd class="col-sm-9">{{doc['school_master']}}</dd>
+      <dt class="col-sm-3">Address:</dt>
+      <dd class="col-sm-9">{{doc['school_address']}}</dd>
+      <dt class="col-sm-3">Phone:</dt>
+      <dd class="col-sm-9">{{doc['school_phone']}}</dd>
+      <dt class="col-sm-3">Email:</dt>
+      <dd class="col-sm-9">{{doc['school_email']}}</dd>
+  
+    </dl>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-4">
+    <h4>Payment Info</h4>
+    <dl class="row">
+      <dt class="col-sm-3">Payment Type:</dt>
+      <dd class="col-sm-9">{{doc['payment_type']}}</dd>
+      <dt class="col-sm-3">Payment Amount:</dt>
+      <dd class="col-sm-9">{{doc['payment_amount']}}</dd>
+      <dt class="col-sm-3">Payment Memo:</dt>
+      <dd class="col-sm-9">{{doc['payment_memo']}}</dd>
+    </dl>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h4> Registered Events</h4>
+    <ul class="list-group">
+      {% for event in doc['events'] %}
+        <li class="list-group-item">
+        <span class="badge">Event {{ event }} </span> 
+        {{ events[event] }}
+        </li>
+      {% endfor %}
+    </ul>
+    <p> Registration UUID: {{doc['_id'] }}</p>
+  </div>
+</div>
+{% endblock %}
