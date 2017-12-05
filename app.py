@@ -42,7 +42,7 @@ EVENTS={"100": "External Forms Empty Hand Chuan Fa/Kempo",
 fields = ['name','address','phone','email','gender','age','experience',
           'school_name','school_master','school_address','school_phone','school_email',
           'payment_type','payment_amount','payment_memo',
-          'events']
+          'events','waiver']
 EXP_DIVISIONS={ 'novice': 'Novice',
                 'beginner': 'Beginner',
                 'intermediate': 'Intermediate',
@@ -95,6 +95,14 @@ def register():
   data = { key:request.form[key] for key in request.form.keys() if key in fields}
   if 'events' in data.keys():
     data['events'] = request.form.getlist('events')
+  if 'waiver' in data.keys():
+    if data['waiver'] == 'yes':
+      data['waiver'] = True
+    else:
+      data['waiver'] = False
+  else:
+      data['waiver'] = False
+  
   competitor_id = None
   if request.form['uid'] == '':
     competitor_id = competitor.insert(data)

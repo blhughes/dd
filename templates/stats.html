@@ -14,7 +14,8 @@
  <table class="table">
       <tr>
         <th>ID</th>
-        <th>Status</th>
+        <th>Payment</th>
+        <th>Waiver</th>
         <th>Name</th>
         <th>Payment Method</th>
         <th>Payment Amount</th>
@@ -26,7 +27,7 @@
         <td><a href="/competitor/{{doc['_id']}}">{{ doc['_id'] }}</a> </td>
         <td>
           {% set state = "success" %}
-          {% set status = "registered" %}
+          {% set status = "paid" %}
           {% if doc['payment_type'] == 'unpaid' %}
           {% set state = "danger" %}
           {% set status = "unpaid" %}
@@ -44,6 +45,14 @@
           {% set status = "mismatch" %}
           {% endif %}
           <span class="label label-{{ state }}">{{status}}</span>
+
+        </td>
+        <td> 
+          {% if doc['waiver'] == true %}
+            <span class="label label-success">Yes</span>
+            {%else%}
+            <span class="label label-danger">No</span>
+            {%endif%}
 
         </td>
         <td> {{ doc['name'] }} </td>
