@@ -60,6 +60,7 @@ GENDERS=['M','F']
 
 
 app= Flask(__name__)
+app.config['MONGO_CONNECT']=False
 app.config.from_object(__name__)
 
 mongo = PyMongo(app)
