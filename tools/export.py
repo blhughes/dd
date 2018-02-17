@@ -13,18 +13,19 @@ auth=(user,passwd)
 
 r=requests.get("%s/ringsheets"%urlroot, auth=auth, verify=False)
 soup = BeautifulSoup(r.text)
-for x in soup.findAll('a')[5:6]:
+for x in soup.findAll('a')[5:]:
     path = x.get('href')
     print path
+    filename = path.replace('/','_').replace('?','_').replace('&','_').replace('=','_')
     options = {
     'page-size': 'Letter',
-    'margin-top': '0.75in',
-    'margin-right': '0.75in',
-    'margin-bottom': '0.75in',
-    'margin-left': '0.75in',
+    'margin-top': '0.5in',
+    'margin-right': '0.5in',
+    'margin-bottom': '0.5in',
+    'margin-left': '0.5in',
     'encoding': "UTF-8",
     'username': user,
     'password': passwd,
-    'zoom': '0.5'
+    'zoom': '.9'
     }
-    pdfkit.from_url("%s/%s"%(urlroot,path), "out.pdf"  ,  options=options)
+    pdfkit.from_url("%s/%s"%(urlroot,path), "%s.pdf"%filename  ,  options=options)
