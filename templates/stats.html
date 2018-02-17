@@ -34,13 +34,13 @@
           {% elif doc['payment_amount'] == '': %}
           {% set  state = "danger"  %}
           {% set status = "unpaid" %}
-          {% elif doc['events']|length== 1 and int(doc['payment_amount']) != 40: %}
+          {% elif doc['events']|length== 1 and doc['payment_amount']|int != 40: %}
           {%  set state = "warning" %}
           {% set status = "mismatch" %}
-          {% elif doc['events']|length == 2 and int(doc['payment_amount']) !=50: %}
+          {% elif doc['events']|length == 2 and doc['payment_amount']|int !=50: %}
           {%  set state = "warning" %}
           {% set status = "mismatch" %}
-          {% elif doc['events']|length >=3 and int(doc['payment_amount']) !=60: %}
+          {% elif doc['events']|length >=3 and doc['payment_amount']|int !=60: %}
           {%  set state = "warning" %}
           {% set status = "mismatch" %}
           {% endif %}
