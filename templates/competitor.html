@@ -18,30 +18,23 @@
     <dl class="row">
       <dt class="col-sm-3">Name:</dt>
       <dd class="col-sm-9">{{doc['name']}}</dd>
-      
+
       <dt class="col-sm-3">Gender:</dt>
       <dd class="col-sm-9">{{doc['gender']}}</dd>
-      
+
       <dt class="col-sm-3">Age:</dt>
       <dd class="col-sm-9">{{doc['age']}}</dd>
-      
+
       <dt class="col-sm-3">Experience:</dt>
       <dd class="col-sm-9">{{doc['experience']}}</dd>
 
-      
-      <dt class="col-sm-3">Address:</dt>
-      <dd class="col-sm-9">{{doc['address']}}</dd>
 
-
-      <dt class="col-sm-3">Phone:</dt>
-      <dd class="col-sm-9">{{doc['phone']}}</dd>
-      
       <dt class="col-sm-3">Email:</dt>
       <dd class="col-sm-9">{{doc['email']}}</dd>
-      
+
       <dt class="col-sm-3">Waiver:</dt>
       <dd class="col-sm-9">{{doc['waiver']}}</dd>
-      
+
     </dl>
   </div>
   <div class="col-md-4">
@@ -49,16 +42,8 @@
     <dl class="row">
       <dt class="col-sm-3">Name:</dt>
       <dd class="col-sm-9">{{doc['school_name']}}</dd>
-      
-      <dt class="col-sm-3">Master:</dt>
-      <dd class="col-sm-9">{{doc['school_master']}}</dd>
-      <dt class="col-sm-3">Address:</dt>
-      <dd class="col-sm-9">{{doc['school_address']}}</dd>
-      <dt class="col-sm-3">Phone:</dt>
-      <dd class="col-sm-9">{{doc['school_phone']}}</dd>
-      <dt class="col-sm-3">Email:</dt>
-      <dd class="col-sm-9">{{doc['school_email']}}</dd>
   
+
     </dl>
   </div>
   </div>
@@ -81,7 +66,7 @@
     <ul class="list-group">
       {% for event in doc['events'] %}
         <li class="list-group-item">
-        <span class="badge">Event {{ event }} </span> 
+        <span class="badge">Event {{ event }} </span>
         {{ events[event] }}
         </li>
       {% endfor %}

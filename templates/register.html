@@ -18,27 +18,7 @@
               <span class="material-input"></span>
             </div>
           </div>
-  
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">home</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="address" placeholder="Address" value="{{doc['address']}}"/>
-              <span class="material-input"></span>
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">phone</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="phone" placeholder="Phone #" value="{{doc['phone']}}" />
-              <span class="material-input"></span>
-            </div>
-          </div>
-  
+
           <div class="input-group">
             <span class="input-group-addon">
               <i class="material-icons">email</i>
@@ -58,7 +38,7 @@
               <span class="material-input"></span>
             </div>
           </div>
-          
+
           <div class="input-group">
             <span class="input-group-addon">
               <i class="material-icons">supervisor_account</i>
@@ -118,46 +98,7 @@
               <span class="material-input"></span>
             </div>
           </div>
-  
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">person</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="school_master" placeholder="Sifu / Master" value="{{doc['school_master']}}"/>
-              <span class="material-input"></span>
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">home</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="school_address" placeholder="Address" value="{{doc['school_address']}}"/>
-              <span class="material-input"></span>
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">phone</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="school_phone" placeholder="Phone #" value="{{doc['school_phone']}}"/>
-              <span class="material-input"></span>
-            </div>
-          </div>
-  
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="material-icons">email</i>
-            </span>
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" name="school_email" placeholder="Email" value="{{doc['school_email']}}"/>
-              <span class="material-input"></span>
-            </div>
-          </div>
+
 
         </div>
       </div>
@@ -171,7 +112,7 @@
     </div>
 
   </div>
-  </div> 
+  </div>
   <div class="row">
   <div class="col-md-4">
           <div class="input-group">
@@ -189,8 +130,15 @@
       <label><input type="radio" value="card" name="payment_type" {% if doc['payment_type']=='card' %} checked {%endif%}required>Card</input></label>
     </div>
     <div class="radio">
+      <label><input type="radio" value="paid_invoice" name="payment_type" {% if doc['payment_type']=='paid_invoice' %} checked {%endif%}required>Paid Invoice</input></label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" value="invoice" name="payment_type" {% if doc['payment_type']=='invoice' %} checked {%endif%}required>Outstanding Invoice</input></label>
+    </div>
+    <div class="radio">
       <label><input type="radio" value="unpaid" name="payment_type" {% if doc['payment_type']=='unpaid' %} checked {%endif%}required>Unpaid</input></label>
     </div>
+
   </div>
   </div>
   </div>
@@ -235,6 +183,9 @@
           <div class="checkbox">
             <label><input type="checkbox" value="107" name="events" {% if '107' in doc['events'] %} checked{% endif %}>Two Person External</label>
           </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="134" name="events" {% if '134' in doc['events'] %} checked{% endif %}>External Group Form</label>
+          </div>
         <h5><u>Weapons</u></h5>
           <div class="checkbox">
             <label><input type="checkbox" value="113" name="events" {% if '113' in doc['events'] %} checked{% endif %}>Trad. Long</label>
@@ -263,7 +214,10 @@
           <div class="checkbox">
             <label><input type="checkbox" value="132" name="events" {% if '132' in doc['events'] %} checked{% endif %}>Two Person Ext. Weapon</label>
           </div>
-         
+          <div class="checkbox">
+            <label><input type="checkbox" value="135" name="events" {% if '135' in doc['events'] %} checked{% endif %}>External Group Form Weapon</label>
+          </div>
+
 
         </div>
       </div>
@@ -292,6 +246,9 @@
           <div class="checkbox">
             <label><input type="checkbox" value="121" name="events" {% if '121' in doc['events'] %} checked{% endif %}>Two Person Internal</label>
           </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="136" name="events" {% if '136' in doc['events'] %} checked{% endif %}>Internal Group Form</label>
+          </div>
 
         <h5><u>Weapons</u></h5>
           <div class="checkbox">
@@ -308,6 +265,9 @@
           </div>
           <div class="checkbox">
             <label><input type="checkbox" value="133" name="events" {% if '133' in doc['events'] %} checked{% endif %}>Two Person Internal Weapon</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="137" name="events" {% if '137' in doc['events'] %} checked{% endif %}>Internal Group Form Weapon</label>
           </div>
         </div>
       </div>
@@ -348,12 +308,12 @@
           <h5><u>Push Hands Weight Divisions</u></h5>
           <p><b>Men:</b>(<=155),(156-190),(191-230),(231+)</p>
           <p><b>Women:</b>(<=130),(131-160),(161+)</p>
-        </div>  
+        </div>
         <div>
           <h5><u>Shuai Jiao Weight Divisions</u></h5>
           <p><b>Men:</b>(<=140),(141-155),(156-170),(171-185),(186-200),(201-220),(221+)</p>
           <p><b>Women:</b>(<=130),(131-160),(161+)</p>
-        </div>  
+        </div>
         </div>
       </div>
   </div>
@@ -364,10 +324,10 @@
     <div class="col-md-4 col-md-offset-4">
     <div class="footer text-center">
       <input type="submit" class="btn btn-primary" value="Submit Registration" />
-    </div> 
     </div>
-  </div>  
-  
+    </div>
+  </div>
+
 
 </form>
 {% endblock %}

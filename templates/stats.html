@@ -31,6 +31,9 @@
           {% if doc['payment_type'] == 'unpaid' %}
           {% set state = "danger" %}
           {% set status = "unpaid" %}
+          {% elif doc['payment_type'] == 'invoice' %}
+          {% set state = "danger" %}
+          {% set status = "open invoice" %} 
           {% elif doc['payment_amount'] == '': %}
           {% set  state = "danger"  %}
           {% set status = "unpaid" %}
